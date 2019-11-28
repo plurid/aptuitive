@@ -27,26 +27,45 @@ class Aptuitive implements IAptuitive {
         this.options = options;
     }
 
-    handleClick(
-        event: any,
+    handleOnClick (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     ) {
-        console.log('clicked', event);
+        console.log('click', event);
     }
 
-    add(WrappedComponent: React.FC<any>) {
+    handleOnMouseEnter (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) {
+        console.log('mouse enter', event);
+    }
+
+    handleOnMouseLeave (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) {
+        console.log('mouse leave', event);
+    }
+
+    add (
+        WrappedComponent: React.FC<any>,
+    ) {
         const AptuitiveComponent: React.FC<any> = (properties) => {
             return (
-                <WrappedComponent
-                    onClick={(event: any) => this.handleClick(event)}
-                    {...properties}
-                />
+                <div
+                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnClick(event)}
+                    onMouseEnter={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseEnter(event)}
+                    onMouseLeave={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseLeave(event)}
+                >
+                    <WrappedComponent
+                        {...properties}
+                    />
+                </div>
             );
         }
 
         return AptuitiveComponent;
     }
 
-    design() {
+    design () {
     }
 }
 
