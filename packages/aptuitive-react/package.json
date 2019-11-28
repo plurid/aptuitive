@@ -1,7 +1,7 @@
 {
     "name": "@plurid/aptuitive-react",
     "version": "0.1.0",
-    "description": "React implementation of Aptuitive to adapt the User Interface through learning from the user usage.",
+    "description": "React implementation of Aptuitive to adapt the User Interface through Learning from Usage.",
     "keywords": [
         "aptuitive",
         "react"
