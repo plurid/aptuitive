@@ -16,4 +16,4 @@
 </h1>
 
 
-React implementation of Aptuitive to adapt the User Interface through learning from the user usage.
+React implementation of Aptuitive to adapt the User Interface through learning from usage.
