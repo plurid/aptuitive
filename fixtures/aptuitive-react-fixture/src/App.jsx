@@ -3,6 +3,8 @@ import React from 'react';
 import Aptuitive from '@plurid/aptuitive-react';
 
 
+const userDesigns = {
+}
 
 const Button = () => {
     return (
@@ -12,7 +14,7 @@ const Button = () => {
     );
 }
 
-const aptuitive = new Aptuitive();
+const aptuitive = new Aptuitive(userDesigns);
 
 const AptButton = aptuitive.add(Button);
 
@@ -20,7 +22,13 @@ const AptButton = aptuitive.add(Button);
 const App = () => {
     return (
         <div>
-            <AptButton />
+            <AptButton
+                aptID="button-1"
+            />
+
+            <AptButton
+                aptID="button-2"
+            />
         </div>
     );
 }
