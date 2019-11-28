@@ -1,5 +1,17 @@
-export interface UserDesign {
+export interface Design {
+    // elementID: - showProbability
+}
+
+
+export interface ElementAction {
     elementID: string;
+    actionID: string;
+    actionType: 'click' | 'mouseEnter' | 'mouseLeave';
+}
+
+export interface ElementActionClick extends ElementAction {
+    actionType: 'click';
+    eventData: any;
 }
 
 

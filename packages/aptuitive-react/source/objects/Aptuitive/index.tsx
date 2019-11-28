@@ -4,6 +4,8 @@ import {
     IAptuitive,
     AptuitiveOptions,
     AptuitiveProperties,
+
+    ElementActionClick,
 } from '../../interfaces';
 
 
@@ -19,24 +21,33 @@ class Aptuitive implements IAptuitive {
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         elementID: string,
     ) {
-        console.log('elementID', elementID);
-        console.log('click', event);
+        const elementAction: ElementActionClick = {
+            elementID,
+            actionID: '',
+            actionType: 'click',
+            eventData: {...event},
+        };
+        console.log(elementAction);
+
+        // console.log('elementID', elementID);
+        // console.log('click', event.button);
+        // console.log('click', event.clientX);
     }
 
     handleOnMouseEnter (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         elementID: string,
     ) {
-        console.log('elementID', elementID);
-        console.log('mouse enter', event);
+        // console.log('elementID', elementID);
+        // console.log('mouse enter', event);
     }
 
     handleOnMouseLeave (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         elementID: string,
     ) {
-        console.log('elementID', elementID);
-        console.log('mouse leave', event);
+        // console.log('elementID', elementID);
+        // console.log('mouse leave', event);
     }
 
     add (
