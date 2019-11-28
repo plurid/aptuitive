@@ -12,4 +12,4 @@
 </h1>
 
 
-Adapt the User Interface through learning from the user usage.
+Adapt the User Interface through Learning from Usage.
