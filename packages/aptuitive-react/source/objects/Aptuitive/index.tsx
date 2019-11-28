@@ -9,7 +9,7 @@ export interface IAptuitive {
      *
      * @param element
      */
-    add: (element: JSX.Element) => void;
+    add: (WrappedComponent: React.FC<any>) => React.FC<any>;
 
     design: () => any;
 }
@@ -27,7 +27,23 @@ class Aptuitive implements IAptuitive {
         this.options = options;
     }
 
-    add(element: JSX.Element) {
+    handleClick(
+        event: any,
+    ) {
+        console.log('clicked', event);
+    }
+
+    add(WrappedComponent: React.FC<any>) {
+        const AptuitiveComponent: React.FC<any> = (properties) => {
+            return (
+                <WrappedComponent
+                    onClick={(event: any) => this.handleClick(event)}
+                    {...properties}
+                />
+            );
+        }
+
+        return AptuitiveComponent;
     }
 
     design() {
