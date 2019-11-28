@@ -1,23 +1,11 @@
 import React from 'react';
 
+import {
+    IAptuitive,
+    AptuitiveOptions,
+    AptuitiveProperties,
+} from '../../interfaces';
 
-
-export interface IAptuitive {
-     /**
-     * Add elements to be tracked for usage and determine
-     * if they are to be included in the User Interface.
-     *
-     * @param element
-     */
-    add: (WrappedComponent: React.FC<any>) => React.FC<any>;
-
-    design: () => any;
-}
-
-
-export interface AptuitiveOptions {
-    hideOnly: boolean;
-}
 
 
 class Aptuitive implements IAptuitive {
@@ -29,34 +17,45 @@ class Aptuitive implements IAptuitive {
 
     handleOnClick (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        elementID: string,
     ) {
+        console.log('elementID', elementID);
         console.log('click', event);
     }
 
     handleOnMouseEnter (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        elementID: string,
     ) {
+        console.log('elementID', elementID);
         console.log('mouse enter', event);
     }
 
     handleOnMouseLeave (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        elementID: string,
     ) {
+        console.log('elementID', elementID);
         console.log('mouse leave', event);
     }
 
     add (
         WrappedComponent: React.FC<any>,
     ) {
-        const AptuitiveComponent: React.FC<any> = (properties) => {
+        const AptuitiveComponent: React.FC<AptuitiveProperties> = (properties) => {
+            const {
+                aptID,
+                ...passThroughProperties
+            } = properties;
+
             return (
                 <div
-                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnClick(event)}
-                    onMouseEnter={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseEnter(event)}
-                    onMouseLeave={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseLeave(event)}
+                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnClick(event, aptID)}
+                    onMouseEnter={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseEnter(event, aptID)}
+                    onMouseLeave={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => this.handleOnMouseLeave(event, aptID)}
                 >
                     <WrappedComponent
-                        {...properties}
+                        {...passThroughProperties}
                     />
                 </div>
             );
